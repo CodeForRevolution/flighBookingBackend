@@ -392,12 +392,18 @@ const getAbout = async (req, res) => {
 }
 
 const updateAbout = async (req, res) => {
+
+	console.log(" ****update about is called****",req.body);
 	const { data } = req.body
 	const formData = JSON.parse(data)
 	const file = req?.files?.thumbnail
 
+	console.log("******data******",formData);
+
 	const response = await About.findOne({ _id: req.params.aboutID })
 	const imagePath = response?.thumbnail_location
+
+	
 	if (imagePath) {
 		await cloudinary.uploader.destroy(imagePath)
 	}
