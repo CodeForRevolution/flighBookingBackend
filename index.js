@@ -7,11 +7,18 @@ const app = express()
 const cors = require("cors")
 
 const fileUpload = require("express-fileupload")
+// app.use(
+// 	fileUpload({
+// 		useTempFiles: true,
+// 	})
+// )
+
 app.use(
 	fileUpload({
-		useTempFiles: true,
+	  useTempFiles: true,
+	  tempFileDir: '/tmp/',
 	})
-)
+  );
 const routes = require("./routes/routes")
 app.use(express.json())
 app.use(cors());

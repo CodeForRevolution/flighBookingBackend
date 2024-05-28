@@ -9,7 +9,9 @@ const {
 	updateAbout,
 	getAbout,
 } = require("../controllers/controllers")
-
+router.route('/').get((req,res,next)=>{
+	res.send("FlightBook v2");
+})
 router.route("/updateImage/:id").put(updateImage)
 router.route("/getImage").get(getImage)
 router.route("/course/:id").get(getData)
